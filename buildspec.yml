@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "test"
+  build:
+    commands:
+      - echo "deploy"
+artifacts:
+  files:
+    - index.html
