@@ -6,7 +6,7 @@ variable "source_repo" {
 }
 
 variable "source_branch" {
-    default = "master"
+    default = "main"
 }
 
 variable "domain_name" {
