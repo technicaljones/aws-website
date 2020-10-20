@@ -21,10 +21,11 @@ resource "aws_codepipeline" "aws_website_pipeline" {
       output_artifacts = ["source"]
 
       configuration = {
-        OAuthToken  = var.github_oauth_token
-        Owner       = var.source_owner
-        Repo        = var.source_repo
-        Branch      = "master"
+        OAuthToken            = var.github_oauth_token
+        Owner                 = var.source_owner
+        Repo                  = var.source_repo
+        Branch                = var.source_branch
+        PollForSourceChanges  = true
       }
     }
   }

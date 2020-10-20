@@ -2,7 +2,6 @@
 A simple website hosted in AWS
 
 ## Approaches
------
 ### **EC2 VMs**
 EC2 Instances in an ASG fronted by an ELB (Application) running a webserver such as nginx.
 
@@ -75,10 +74,10 @@ Example usage
 ```
 module "aws_website_001" {
     source              = "./website"
-    domain_name         = "www.technicaljones.net"
-    source_owner        = "deworrall92"
-    source_repo         = "website"
-    trigger_on_commit   = "true"
+    domain_name         = "technicaljones.net"
+    source_owner        = "technicaljones"
+    source_repo         = "aws-website"
+    github_oauth_token  = "my github pat token"
 }
 ```
 
@@ -86,10 +85,11 @@ Module inputs
 - source    *(required)* - Source for the module
 - source_owner *(required)* - The owner / user of the GitHub repository.
 - source_repo *(required)* - The name of the repository.
-- source_branch - Defaults to *master*. 
+- source_branch - Defaults to *main*. 
 - domain_name *(required)* - Domain name for the website.
 - owned_domain - Defaults to True. Set to false if the Domain isn't owned / registerd in route53. Web address will be the cloudfront distribution link.
-- trigger_on_commit - Defaults to False. Set to true to trigger a deployment on commit.
+- github_oauth_token *(required)* - Github personal token to access git repo.
+
 
 Module outputs
 - cloudfront_domain_name - The url for the cloudfront distribution
@@ -100,10 +100,11 @@ cd infra
 terraform init
 terraform plan
 terraform apply
+aws cp src/ s3://technicaljones.net --recursive
 
 
 ### Running from code pipeline
-build triggered from main
+Log into the aws console and run from the CodePipeline console
 
 
 # todo 
