@@ -17,6 +17,15 @@ resource "aws_s3_bucket" "aws_website" {
 resource "aws_s3_bucket" "aws_website_logs" {
     bucket = "aws.webste.logs.${var.domain_name}"
     acl    = "log-delivery-write"
+
+    lifecycle_rule {
+        id      = "1_week_logs"
+        prefix  = "logs/"
+        enabled = true
+        expiration {
+            days = 7
+        }
+    }
 }
 
 resource "aws_s3_bucket" "codepipeline_artifacts" {

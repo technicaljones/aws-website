@@ -18,3 +18,10 @@ variable "owned_domain" {
 
 variable "github_oauth_token" {
 }
+
+variable "short_name" {
+}
+
+variable "alert_sms" {
+    default = []
+}

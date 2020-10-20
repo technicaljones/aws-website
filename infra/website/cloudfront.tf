@@ -48,11 +48,18 @@ resource "aws_cloudfront_distribution" "aws_website_distribution" {
         }
     }
 
+    custom_error_response {
+        error_caching_min_ttl = 10 
+        error_code            = 404 
+        response_code         = 404 
+        response_page_path    = "/error.html" 
+    }
+
     dynamic "viewer_certificate" {
         for_each = var.owned_domain ? [1] : []
         content {
             acm_certificate_arn      = aws_acm_certificate_validation.aws_website_cert_validation[0].certificate_arn
-            minimum_protocol_version = "TLSv1"
+            minimum_protocol_version = "TLSv1.2_2019"
             ssl_support_method       = "sni-only"
         }
     }

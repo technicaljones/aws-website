@@ -96,18 +96,17 @@ Module outputs
 - domain_name - The domain name used to point to the cloudfront distribution.
 
 ### Running for the first time
+```
 cd infra
 terraform init
 terraform plan
 terraform apply
-aws cp src/ s3://technicaljones.net --recursive
+```
 
 
-### Running from code pipeline
-Log into the aws console and run from the CodePipeline console
+### Deployment
+- Deployments will be triggered of the branch specified in the module
 
+### Alerting
+ - Alerts will be sent to the SMS numbers provided to the module in the `alert_sms` variable. These alerts are based off cloudfront metrics for 5xx status codes. B
 
-# todo 
-sns build notifications
-cloudwatch metrics
-cloudwatch log metrics
