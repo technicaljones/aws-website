@@ -70,6 +70,31 @@ monitoring of storage usage in s3
 The cost will initially be minimal but could grow if lots of users access large files.
 
 ## Usage
+-----
+Example usage 
+```
+module "aws_website_001" {
+    source              = "./website"
+    domain_name         = "www.technicaljones.net"
+    source_owner        = "deworrall92"
+    source_repo         = "website"
+    trigger_on_commit   = "true"
+}
+```
+
+Module inputs
+- source    *(required)* - Source for the module
+- source_owner *(required)* - The owner / user of the GitHub repository.
+- source_repo *(required)* - The name of the repository.
+- source_branch - Defaults to *master*. 
+- domain_name *(required)* - Domain name for the website.
+- owned_domain - Defaults to True. Set to false if the Domain isn't owned / registerd in route53. Web address will be the cloudfront distribution link.
+- trigger_on_commit - Defaults to False. Set to true to trigger a deployment on commit.
+
+Module outputs
+- cloudfront_domain_name - The url for the cloudfront distribution
+- domain_name - The domain name used to point to the cloudfront distribution.
+
 ### Running for the first time
 cd infra
 terraform init

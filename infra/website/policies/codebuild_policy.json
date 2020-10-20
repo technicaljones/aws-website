@@ -17,7 +17,7 @@
         ],
         "Resource": [
           "${aws_s3_bucket_arn}",
-          "${aws_s3_bucket_arn/*"
+          "${aws_s3_bucket_arn}/*"
         ],
         "Effect": "Allow"
       },

@@ -1,6 +1,6 @@
 resource "aws_codebuild_project" "build_project" {
-  name           = "${split(".", var.domain_name)[1]}-deploy"
-  description    = "Build deploy project for ${split(".", var.domain_name)[1]}"
+  name           = "${split(".", var.domain_name)[0]}-deploy"
+  description    = "Build deploy project for ${split(".", var.domain_name)[0]}"
   service_role   = aws_iam_role.codebuild_assume_role.arn
   build_timeout  = "5"
 

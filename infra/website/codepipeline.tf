@@ -5,7 +5,7 @@ resource "aws_codepipeline" "aws_website_pipeline" {
   #depends_on = ["aws_s3_bucket.bucket_site", "aws_s3_bucket.source"]
 
   artifact_store {
-    location = "${var.domain_name}-artifacts"
+    location = "artifacts.${var.domain_name}"
     type     = "S3"
   }
 
@@ -21,9 +21,10 @@ resource "aws_codepipeline" "aws_website_pipeline" {
       output_artifacts = ["source"]
 
       configuration = {
-        Owner  = var.source_owner
-        Repo   = var.source_repo
-        Branch = "master"
+        OAuthToken  = var.github_oauth_token
+        Owner       = var.source_owner
+        Repo        = var.source_repo
+        Branch      = "master"
       }
     }
   }
@@ -32,8 +33,8 @@ resource "aws_codepipeline" "aws_website_pipeline" {
     name = "Deploy"
 
     action {
-      name            = "Deploy"
-      category        = "Deploy"
+      name            = "Build"
+      category        = "Build"
       owner           = "AWS"
       provider        = "CodeBuild"
       version         = "1"

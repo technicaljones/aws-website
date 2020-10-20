@@ -40,7 +40,9 @@ data "template_file" "codepipeline_policy" {
   template = file("${path.module}/policies/code_pipeline_policy.json")
 
   vars = {
-    aws_s3_bucket_arn = "${aws_s3_bucket.aws_website.arn}"
+    aws_s3_bucket_arn           = aws_s3_bucket.aws_website.arn
+    aws_s3_artifact_bucket_arn  = aws_s3_bucket.codepipeline_artifacts.arn
+    aws_codebuild_project_arn   = aws_codebuild_project.build_project.arn
   }
 }
 
@@ -76,7 +78,7 @@ data "template_file" "codebuild_policy" {
   template = file("${path.module}/policies/codebuild_policy.json")
 
   vars = {
-    aws_s3_bucket_arn = "${aws_s3_bucket.aws_website.arn}"
+    aws_s3_bucket_arn = aws_s3_bucket.aws_website.arn
   }
 }
 

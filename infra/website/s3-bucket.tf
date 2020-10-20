@@ -15,11 +15,11 @@ resource "aws_s3_bucket" "aws_website" {
 }
 
 resource "aws_s3_bucket" "aws_website_logs" {
-    bucket = "aws_webste_logs_${var.domain_name}"
+    bucket = "aws.webste.logs.${var.domain_name}"
     acl    = "log-delivery-write"
 }
 
 resource "aws_s3_bucket" "codepipeline_artifacts" {
-    bucket = "aws_webste_logs_${var.domain_name}"
-    acl    = "log-delivery-write"
+    bucket = "artifacts.${var.domain_name}"
+    acl    = "private"
 }
