@@ -3,10 +3,10 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "test"
+      - aws s3 cp src/ s3://technicaljones.net --recursive
   build:
     commands:
-      - echo "deploy"
+      - echo "deployed"
 artifacts:
   files:
-    - index.html
+    - src/
