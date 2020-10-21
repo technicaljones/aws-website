@@ -1,6 +1,8 @@
 # aws-website
 A simple website hosted in AWS
 
+working demo: https://technicaljones.net/
+
 ## Approaches
 ### **EC2 VMs**
 EC2 Instances in an ASG fronted by an ELB (Application) running a webserver such as nginx.
