@@ -104,7 +104,8 @@ Requirements:
 1. Create a tfvars file with the aws and github variables set correctly.
 2. Create a bucket in s3 for terraform state managment that the keys from step 1 will have access to.
 3. Update the provider configuration in `infra/terraform-config.tf` to point to the related bucket.
-4. Update the iam pol
+4. Set the appropriate variables for the module
+5. Run:
 
 ```
 cd infra
@@ -112,7 +113,7 @@ terraform init
 terraform plan
 terraform apply
 ```
-
+6. Run aws s3 cp src/ s3://bucket-name --recursive
 
 ### Deployment
 - Deployments will be triggered of the branch specified in the module
