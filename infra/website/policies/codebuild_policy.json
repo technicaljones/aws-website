@@ -19,7 +19,11 @@
           "${aws_s3_bucket_arn}",
           "${aws_s3_bucket_arn}/*",
           "${terraform_state_bucket}",
-          "${terraform_state_bucket}/*"
+          "${terraform_state_bucket}/*",
+          "${aws_s3_artifact_bucket_arn}",
+          "${aws_s3_artifact_bucket_arn}/*",
+          "${aws_s3_logs_bucket}",
+          "${aws_s3_logs_bucket}/*"
         ],
         "Effect": "Allow"
       },
@@ -34,7 +38,8 @@
           "codebuild:*",
           "sns:*",
           "route53:*",
-          "cloudfront:*"
+          "cloudfront:*",
+          "secretsmanager:*"
         ],
         "Resource": [
           "*"

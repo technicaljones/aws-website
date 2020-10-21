@@ -78,8 +78,10 @@ data "template_file" "codebuild_policy" {
   template = file("${path.module}/policies/codebuild_policy.json")
 
   vars = {
-    aws_s3_bucket_arn       = aws_s3_bucket.aws_website.arn
-    terraform_state_bucket  = data.aws_s3_bucket.state.arn
+    aws_s3_bucket_arn           = aws_s3_bucket.aws_website.arn
+    terraform_state_bucket      = data.aws_s3_bucket.state.arn
+    aws_s3_artifact_bucket_arn  = aws_s3_bucket.codepipeline_artifacts.arn
+    aws_s3_logs_bucket          = aws_s3_bucket.aws_website_logs.arn
   }
 }
 
