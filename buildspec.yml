@@ -14,7 +14,7 @@ phases:
       - terraform init -input=false 
       - terraform plan -var aws_region=eu-west-1 -var github_oauth_token=$github_oauth_token
       - terraform apply -auto-approve -var aws_region=eu-west-1 -var github_oauth_token=$github_oauth_token
-      - aws s3 cp src/ s3://technicaljones.net --recursive
+      - aws s3 cp "$CODEBUILD_SRC_DIR/src" s3://technicaljones.net --recursive
       
 artifacts:
   files:
