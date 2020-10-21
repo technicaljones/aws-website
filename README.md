@@ -82,7 +82,7 @@ module "aws_website_001" {
     short_name          = "technicaljones"
     source_owner        = "technicaljones"
     source_repo         = "aws-website"
-    github_oauth_token  = "my github pat token"
+    github_oauth_token  = var.github_oauth_token
     state_bucket        = "awswebsiteterraformstate2"
 
     providers = {
