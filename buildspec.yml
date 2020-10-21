@@ -9,7 +9,7 @@ phases:
   build:
     commands:
       - cd "$CODEBUILD_SRC_DIR/infra"
-      - terraform init -input=false -var region=eu-west-1
+      - terraform init -input=false -var aws_region=eu-west-1
       - terraform plan
       - terraform apply -auto-approve -input=false
       - aws s3 cp src/ s3://technicaljones.net --recursive
