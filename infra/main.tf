@@ -6,6 +6,7 @@ module "aws_website_001" {
     short_name          = "technicaljones"
     owned_domain        = true
     github_oauth_token  = var.github_oauth_token
+    state_bucket        = "awswebsiteterraformstate2"
 
     providers = {
         aws.us-east-1 = aws.us-east-1

@@ -33,6 +33,8 @@ Cons:
 
 
 ### **Chosen appproach: S3**
+## Diagram
+![diagram](diagram.PNG)
 
 ## Considerations:
 -----
@@ -78,6 +80,7 @@ module "aws_website_001" {
     source_owner        = "technicaljones"
     source_repo         = "aws-website"
     github_oauth_token  = "my github pat token"
+    state_bucket        = "awswebsiteterraformstate2"
 }
 ```
 
@@ -89,6 +92,7 @@ Module inputs
 - domain_name *(required)* - Domain name for the website.
 - owned_domain - Defaults to True. Set to false if the Domain isn't owned / registerd in route53. Web address will be the cloudfront distribution link.
 - github_oauth_token *(required)* - Github personal token to access git repo.
+- state_bucket *(required)* - The bucket for tf state (needed for codebuild premissions).
 
 
 Module outputs
@@ -96,6 +100,12 @@ Module outputs
 - domain_name - The domain name used to point to the cloudfront distribution.
 
 ### Running for the first time
+Requirements:
+1. Create a tfvars file with the aws and github variables set correctly.
+2. Create a bucket in s3 for terraform state managment that the keys from step 1 will have access to.
+3. Update the provider configuration in `infra/terraform-config.tf` to point to the related bucket.
+4. Update the iam pol
+
 ```
 cd infra
 terraform init

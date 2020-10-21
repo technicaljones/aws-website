@@ -25,3 +25,6 @@ variable "short_name" {
 variable "alert_sms" {
     default = []
 }
+
+variable "state_bucket" {
+}

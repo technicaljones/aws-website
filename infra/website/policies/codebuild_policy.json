@@ -17,7 +17,9 @@
         ],
         "Resource": [
           "${aws_s3_bucket_arn}",
-          "${aws_s3_bucket_arn}/*"
+          "${aws_s3_bucket_arn}/*",
+          "${terraform_state_bucket}",
+          "${terraform_state_bucket}/*"
         ],
         "Effect": "Allow"
       },

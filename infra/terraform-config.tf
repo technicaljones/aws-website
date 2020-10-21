@@ -1,14 +1,18 @@
 provider "aws" {
-    access_key = var.aws_access_key
-    secret_key = var.aws_secret_access_key
     region     = var.aws_region
 }
 
 provider "aws" {
     alias   = "us-east-1"
     region  = "us-east-1"
-    access_key = var.aws_access_key
-    secret_key = var.aws_secret_access_key
+}
+
+terraform {
+  backend "s3" {
+    bucket = "awswebsiteterraformstate2"
+    key    = "terraform.tfstate"
+    region = "eu-west-1"
+  }
 }
 
 variable "aws_region" {}
