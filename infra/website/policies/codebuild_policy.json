@@ -39,7 +39,8 @@
           "sns:*",
           "route53:*",
           "cloudfront:*",
-          "secretsmanager:*"
+          "secretsmanager:*",
+          "cloudwatch:*"
         ],
         "Resource": [
           "*"
