@@ -15,7 +15,7 @@ terraform {
   }
 }
 
-# variable "aws_region" {}
+variable "aws_region" {}
 # variable "aws_access_key" {}
 # variable "aws_secret_access_key" {}
 variable "github_oauth_token" {}
