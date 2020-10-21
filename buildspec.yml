@@ -12,9 +12,8 @@ phases:
       - terraform init
       - terraform plan
       - terraform apply -auto-approve -input=false
-  deploy:
-    commands:
       - aws s3 cp src/ s3://technicaljones.net --recursive
+      
 artifacts:
   files:
     - src/
