@@ -79,10 +79,15 @@ Example usage
 module "aws_website_001" {
     source              = "./website"
     domain_name         = "technicaljones.net"
+    short_name          = "technicaljones"
     source_owner        = "technicaljones"
     source_repo         = "aws-website"
     github_oauth_token  = "my github pat token"
     state_bucket        = "awswebsiteterraformstate2"
+
+    providers = {
+        aws.us-east-1 = aws.us-east-1
+    }
 }
 ```
 
@@ -92,9 +97,11 @@ Module inputs
 - source_repo *(required)* - The name of the repository.
 - source_branch - Defaults to *main*. 
 - domain_name *(required)* - Domain name for the website.
+- short_name *(required)* - Used for naming resource with strict naming standards.
 - owned_domain - Defaults to True. Set to false if the Domain isn't owned / registerd in route53. Web address will be the cloudfront distribution link.
 - github_oauth_token *(required)* - Github personal token to access git repo.
 - state_bucket *(required)* - The bucket for tf state (needed for codebuild premissions).
+- providers *(required)*  - ACM and various associated resoruces need to be created in us-east-1.
 
 
 Module outputs
@@ -116,6 +123,8 @@ terraform plan
 terraform apply
 ```
 6. Run aws s3 cp src/ s3://bucket-name --recursive
+7. Add your github oauth token to the secret in secrets manager `{"token": token}`
+8. You are now ready to deploy using the pipeline
 
 ### Deployment
 - Deployments will be triggered of the branch specified in the module
