@@ -119,8 +119,8 @@ Requirements:
 ```
 cd infra
 terraform init
-terraform plan
-terraform apply
+terraform plan -var aws_region=eu-west-1 -var github_oauth_token=token
+terraform apply -var aws_region=eu-west-1 -var github_oauth_token=token
 ```
 6. Run aws s3 cp src/ s3://bucket-name --recursive
 7. Add your github oauth token to the secret in secrets manager `{"token": token}`
