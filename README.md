@@ -114,7 +114,8 @@ Requirements:
 2. Create a bucket in s3 for terraform state managment that the keys from step 1 will have access to.
 3. Update the provider configuration in `infra/terraform-config.tf` to point to the related bucket.
 4. Set the appropriate variables for the module
-5. Run:
+5. Update buildspec with appropriate s3 bucket
+6. Run:
 
 ```
 cd infra
